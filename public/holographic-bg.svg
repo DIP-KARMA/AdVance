@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="30" />
+    </filter>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14001f" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#2d0a3f" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#14001f" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8A2BE2" stop-opacity="0.05" />
+      <stop offset="50%" stop-color="#FF00FF" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#8A2BE2" stop-opacity="0.05" />
+    </linearGradient>
+    <radialGradient id="glow1" cx="30%" cy="30%" r="70%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#8A2BE2" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#14001f" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="70%" cy="70%" r="70%" fx="70%" fy="70%">
+      <stop offset="0%" stop-color="#FF00FF" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#14001f" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Base background -->
+  <rect width="1440" height="900" fill="url(#grad1)" />
+  
+  <!-- Holographic elements -->
+  <g opacity="0.6" filter="url(#blur)">
+    <ellipse cx="300" cy="200" rx="200" ry="150" fill="url(#glow1)" />
+    <ellipse cx="1100" cy="700" rx="250" ry="200" fill="url(#glow2)" />
+    <ellipse cx="700" cy="400" rx="300" ry="200" fill="url(#grad2)" />
+  </g>
+  
+  <!-- Subtle grid pattern -->
+  <g opacity="0.05">
+    <path d="M0 100 H1440" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M0 300 H1440" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M0 500 H1440" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M0 700 H1440" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M200 0 V900" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M400 0 V900" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M600 0 V900" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M800 0 V900" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M1000 0 V900" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M1200 0 V900" stroke="#FFFFFF" stroke-width="1" />
+  </g>
+  
+  <!-- Subtle particles -->
+  <g opacity="0.2">
+    <circle cx="100" cy="100" r="1" fill="white" />
+    <circle cx="300" cy="200" r="1" fill="white" />
+    <circle cx="500" cy="150" r="1" fill="white" />
+    <circle cx="700" cy="300" r="1" fill="white" />
+    <circle cx="900" cy="250" r="1" fill="white" />
+    <circle cx="1100" cy="400" r="1" fill="white" />
+    <circle cx="1300" cy="350" r="1" fill="white" />
+    <circle cx="200" cy="500" r="1" fill="white" />
+    <circle cx="400" cy="450" r="1" fill="white" />
+    <circle cx="600" cy="600" r="1" fill="white" />
+    <circle cx="800" cy="550" r="1" fill="white" />
+    <circle cx="1000" cy="700" r="1" fill="white" />
+    <circle cx="1200" cy="650" r="1" fill="white" />
+    <circle cx="1400" cy="800" r="1" fill="white" />
+  </g>
+  
+  <!-- Holographic flares -->
+  <g opacity="0.1">
+    <ellipse cx="200" cy="300" rx="50" ry="10" fill="#8A2BE2" filter="url(#blur)" />
+    <ellipse cx="800" cy="200" rx="30" ry="5" fill="#FF00FF" filter="url(#blur)" />
+    <ellipse cx="1200" cy="500" rx="40" ry="8" fill="#8A2BE2" filter="url(#blur)" />
+    <ellipse cx="400" cy="700" rx="35" ry="7" fill="#FF00FF" filter="url(#blur)" />
+    <ellipse cx="1000" cy="800" rx="45" ry="9" fill="#8A2BE2" filter="url(#blur)" />
+  </g>
+</svg>
