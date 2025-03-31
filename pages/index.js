@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Background3D from '../components/Background3D';
 import Image from 'next/image';
 import ImageSlideshow from '../components/ImageSlideshow';
+import ShowcaseSection from '../components/ShowcaseSection';
 
 // Image slideshow data - reduce the number of images to improve performance
 const slideshowImages = [
@@ -103,7 +104,7 @@ export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [preview, setPreview] = useState(null);
 
-  const handleImageUpload = (e) => {
+  const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -139,7 +140,6 @@ export default function Home() {
 
       {/* Hero Section */}
       <header className="relative pt-40 pb-20 px-6 overflow-hidden">
-        <div className="fluid-header-bg"></div>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Slideshow - Moved to a more prominent position spanning 7 columns */}
@@ -155,8 +155,20 @@ export default function Home() {
                   <span className="text-[#FF00FF] font-semibold">New:</span> AI integration v2.0
                 </div>
                 
-                <div className="mb-6">
-                  <ImageSlideshow images={slideshowImages} captions={slideshowCaptions} interval={4000} height={350} />
+                <div className="mb-6 relative">
+                  {/* Professional highlight effect */}
+                  <div className="absolute -inset-2 bg-gradient-to-r from-[#8A2BE2]/10 to-[#FF00FF]/10 rounded-xl blur-xl opacity-30 z-0"></div>
+                  
+                  {/* Clean, professional slideshow container */}
+                  <div className="relative z-20 rounded-xl overflow-hidden" style={{ boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15), 0 0 15px rgba(138, 43, 226, 0.1)' }}>
+                    <ImageSlideshow 
+                      images={slideshowImages} 
+                      captions={slideshowCaptions} 
+                      interval={4000} 
+                      height={350} 
+                      objectFit="contain" 
+                    />
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -229,7 +241,7 @@ export default function Home() {
               >
                 <div className="flex -space-x-2">
                   {reviews.map((review, index) => (
-                    <div key={index} className="w-8 h-8 rounded-full bg-gradient-to-r from-[#8A2BE2] to-[#FF00FF] flex items-center justify-center text-white text-xs font-semibold border-2 border-[#14001f]">
+                    <div key={index} className="w-8 h-8 premium-gradient rounded-full mx-auto flex items-center justify-center text-white text-xs font-semibold border-2 border-[#14001f]">
                       {review.name.split(' ').map(n => n[0]).join('')}
                     </div>
                   ))}
@@ -237,8 +249,8 @@ export default function Home() {
                 <div className="flex items-center">
                   <div className="flex">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <svg key={star} className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      <svg key={star} className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     ))}
                   </div>
@@ -250,35 +262,53 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Create Ad Form - Moved to a separate section below the hero */}
+      {/* Create Ad Form - Enhanced with sophisticated design */}
       <section className="py-16 px-6 bg-gradient-to-b from-transparent to-[#14001f]/30">
         <div className="max-w-3xl mx-auto">
-          <div className="glass-panel-premium rounded-xl p-8 platform-shadow">
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">Create Your Ad</h2>
-            <div className="space-y-6">
-              <div className="space-y-4">
+          <div className="glass-panel-premium rounded-xl p-8 platform-shadow relative overflow-hidden border border-[#BB86FC]/20">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#8A2BE2]/20 to-[#FF00FF]/20 rounded-full filter blur-2xl opacity-70 -mr-20 -mt-20"></div>
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-[#8A2BE2]/20 to-[#03DAC5]/20 rounded-full filter blur-2xl opacity-70 -ml-20 -mb-20"></div>
+            
+            {/* Sophisticated header with eye-catching phrase */}
+            <div className="relative z-10 mb-8">
+              <h2 className="text-3xl font-bold text-white mb-2 text-center">Transform Vision into Impact</h2>
+              <p className="text-gray-300 text-center max-w-xl mx-auto">Use our AI to create stunning ads that get real results. Simple, fast, and powerful.</p>
+            </div>
+            
+            {/* Image upload section with enhanced styling */}
+            <div className="space-y-4">
+              <div className="relative">
                 <div 
-                  className="glass-panel-premium rounded-xl p-8 text-center cursor-pointer hover-glow"
+                  className="glass-panel-premium rounded-xl p-8 text-center cursor-pointer hover-glow border border-[#BB86FC]/30 transition-all duration-300"
                   onClick={() => document.getElementById('image-upload').click()}
                 >
                   {preview ? (
-                    <motion.img 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      src={preview} 
-                      alt="Preview" 
-                      className="max-h-48 mx-auto rounded-lg" 
+                    <Image
+                      src={preview}
+                      alt="Preview"
+                      width={400}
+                      height={300}
+                      className="rounded-lg mx-auto"
                     />
                   ) : (
                     <div className="space-y-4">
                       <div className="w-16 h-16 premium-gradient rounded-full mx-auto flex items-center justify-center">
-                        <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        <svg
+                          className="w-8 h-8 text-white"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                          />
                         </svg>
                       </div>
-                      <p className="text-gray-400">
-                        Click to upload or drag and drop
-                      </p>
+                      <p className="text-gray-400">Import visual assets or utilize drag-and-drop functionality</p>
                     </div>
                   )}
                   <input
@@ -286,43 +316,106 @@ export default function Home() {
                     type="file"
                     className="hidden"
                     accept="image/*"
-                    onChange={handleImageUpload}
+                    onChange={handleImageChange}
                   />
                 </div>
+                
+                {/* Image format specifications with increased max size */}
+                <div className="flex justify-between text-xs text-gray-500 mt-2 px-2">
+                  <span>Supported: PNG, JPG, WebP</span>
+                  <span>Max size: 500MB</span>
+                </div>
               </div>
-
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-400">
-                  Describe your ad
-                </label>
-                <textarea
-                  value={prompt}
-                  onChange={(e) => setPrompt(e.target.value)}
-                  className="w-full h-32 glass-panel-premium rounded-xl p-4 text-white resize-none focus:ring-2 focus:ring-purple-500 outline-none"
-                  placeholder="Enter your creative vision..."
-                />
+            </div>
+            
+            {/* Prompt input with enhanced styling */}
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <label className="block text-sm font-medium text-gray-300">Creative Direction Parameters</label>
+                <span className="text-xs text-[#BB86FC]">AI-Enhanced</span>
               </div>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="button-3d w-full py-4 rounded-xl text-white font-semibold"
-                type="submit"
-              >
-                CREATE YOUR AD NOW
-              </motion.button>
+              <textarea
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                className="w-full h-32 glass-panel-premium rounded-xl p-4 text-white resize-none focus:ring-2 focus:ring-purple-500 outline-none border border-[#BB86FC]/30"
+                placeholder="Articulate your creative vision with specificity regarding tone, aesthetic, and thematic elements..."
+              />
+              
+              {/* Prompt suggestions */}
+              <div className="flex flex-wrap gap-2 mt-2">
+                <div className="text-xs bg-[#BB86FC]/20 text-[#BB86FC] px-2 py-1 rounded-full cursor-pointer hover:bg-[#BB86FC]/30 transition-colors">Minimalist</div>
+                <div className="text-xs bg-[#BB86FC]/20 text-[#BB86FC] px-2 py-1 rounded-full cursor-pointer hover:bg-[#BB86FC]/30 transition-colors">Corporate</div>
+                <div className="text-xs bg-[#BB86FC]/20 text-[#BB86FC] px-2 py-1 rounded-full cursor-pointer hover:bg-[#BB86FC]/30 transition-colors">Vibrant</div>
+                <div className="text-xs bg-[#BB86FC]/20 text-[#BB86FC] px-2 py-1 rounded-full cursor-pointer hover:bg-[#BB86FC]/30 transition-colors">Luxury</div>
+              </div>
+            </div>
+            
+            {/* Advanced options */}
+            <div className="glass-panel-premium rounded-xl p-4 border border-[#BB86FC]/30">
+              <div className="flex justify-between items-center mb-3">
+                <h4 className="text-sm font-semibold text-white">Advanced Configuration</h4>
+                <div className="text-xs text-[#03DAC5] bg-[#03DAC5]/10 px-3 py-1 rounded-full">Enterprise</div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs text-gray-400 mb-1">Aspect Ratio</label>
+                  <select className="w-full glass-panel-premium rounded-lg p-2 text-sm text-white border border-[#BB86FC]/30 outline-none">
+                    <option>16:9 - Standard</option>
+                    <option>1:1 - Square</option>
+                    <option>4:5 - Portrait</option>
+                    <option>9:16 - Story</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-400 mb-1">Style Intensity</label>
+                  <select className="w-full glass-panel-premium rounded-lg p-2 text-sm text-white border border-[#BB86FC]/30 outline-none">
+                    <option>Balanced</option>
+                    <option>Subtle</option>
+                    <option>Pronounced</option>
+                    <option>Dramatic</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="button-3d w-full py-4 rounded-xl text-white font-semibold"
+              type="submit"
+            >
+              UNLEASH YOUR CREATIVE MASTERPIECE
+            </motion.button>
+            
+            {/* Trust indicators */}
+            <div className="flex items-center justify-center space-x-2 text-xs text-gray-500">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <span>Enterprise-grade security & IP protection</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Showcase Section - Using the new professional component */}
+      <ShowcaseSection />
+
+      {/* Features Section - More sophisticated and detailed */}
       <section id="features" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="glass-panel-premium rounded-2xl p-12 platform-shadow">
-            <h2 className="text-3xl font-bold text-white text-center mb-12">
-              Powerful Features
-            </h2>
+          <div className="glass-panel-premium rounded-2xl p-12 platform-shadow border border-[#BB86FC]/20">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+              <div>
+                <h2 className="text-3xl font-bold text-white">Enterprise-Grade Capabilities</h2>
+                <p className="text-gray-400 mt-2 max-w-xl">Sophisticated AI-driven solutions engineered for optimal marketing efficacy</p>
+              </div>
+              <div className="mt-4 md:mt-0 flex items-center">
+                <div className="text-xs bg-[#BB86FC]/20 text-[#BB86FC] px-3 py-1 rounded-full mr-2">ISO 27001</div>
+                <div className="text-xs bg-[#03DAC5]/20 text-[#03DAC5] px-3 py-1 rounded-full">GDPR Compliant</div>
+              </div>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <motion.div
@@ -331,86 +424,163 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="feature-card glass-panel-premium rounded-xl p-6"
+                  className="feature-card glass-panel-premium rounded-xl p-6 border border-[#BB86FC]/20"
                 >
                   <div className="w-12 h-12 premium-gradient rounded-xl flex items-center justify-center mb-4 text-2xl">
                     {feature.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
+                  <p className="text-gray-400 mb-4">{feature.description}</p>
+                  
+                  {/* Unique technical specifications for each feature */}
+                  {index === 0 && (
+                    <div className="pt-4 border-t border-gray-800 mt-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-xs text-[#BB86FC]">Performance Metrics</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <div className="text-center">
+                          <div className="text-lg font-bold text-[#BB86FC]">99.8%</div>
+                          <div className="text-[10px] text-gray-500">Accuracy</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-lg font-bold text-[#03DAC5]">0.2s</div>
+                          <div className="text-[10px] text-gray-500">Response</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {index === 1 && (
+                    <div className="pt-4 border-t border-gray-800 mt-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-xs text-[#BB86FC]">Template Library</span>
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        <div className="bg-black/30 rounded px-2 py-1 text-xs text-white">Social</div>
+                        <div className="bg-black/30 rounded px-2 py-1 text-xs text-white">Print</div>
+                        <div className="bg-black/30 rounded px-2 py-1 text-xs text-white">Video</div>
+                        <div className="bg-black/30 rounded px-2 py-1 text-xs text-white">+25 more</div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {index === 2 && (
+                    <div className="pt-4 border-t border-gray-800 mt-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-xs text-[#BB86FC]">Brand Compatibility</span>
+                      </div>
+                      <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
+                        <div className="h-full w-[95%] bg-gradient-to-r from-[#BB86FC] to-[#03DAC5]"></div>
+                      </div>
+                      <div className="flex justify-between mt-1">
+                        <span className="text-[10px] text-gray-500">Brand Match</span>
+                        <span className="text-[10px] text-gray-500">95%</span>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {index === 3 && (
+                    <div className="pt-4 border-t border-gray-800 mt-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-xs text-[#BB86FC]">Export Options</span>
+                      </div>
+                      <div className="grid grid-cols-4 gap-1">
+                        <div className="bg-black/30 rounded p-1 flex flex-col items-center">
+                          <span className="text-[10px] text-white">JPG</span>
+                          <span className="text-[8px] text-gray-500">✓</span>
+                        </div>
+                        <div className="bg-black/30 rounded p-1 flex flex-col items-center">
+                          <span className="text-[10px] text-white">PNG</span>
+                          <span className="text-[8px] text-gray-500">✓</span>
+                        </div>
+                        <div className="bg-black/30 rounded p-1 flex flex-col items-center">
+                          <span className="text-[10px] text-white">SVG</span>
+                          <span className="text-[8px] text-gray-500">✓</span>
+                        </div>
+                        <div className="bg-black/30 rounded p-1 flex flex-col items-center">
+                          <span className="text-[10px] text-white">MP4</span>
+                          <span className="text-[8px] text-gray-500">✓</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {index === 4 && (
+                    <div className="pt-4 border-t border-gray-800 mt-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-xs text-[#BB86FC]">Client Success</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="flex">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <svg key={star} className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <span className="text-xs text-white ml-2">4.9/5.0</span>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {index === 5 && (
+                    <div className="pt-4 border-t border-gray-800 mt-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-xs text-[#BB86FC]">API Throughput</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs text-white">10K+</div>
+                        <div className="text-xs text-white">req/min</div>
+                      </div>
+                      <div className="h-1 w-full bg-gray-800 rounded-full mt-1">
+                        <div className="h-full w-[80%] bg-[#03DAC5]"></div>
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section id="benefits" className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="glass-panel-premium rounded-2xl p-12 platform-shadow">
-            <h2 className="text-3xl font-bold text-white text-center mb-12">
-              Why Choose AdVance
-            </h2>
             
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-              <div className="lg:col-span-2">
-                <div className="glass-panel-premium rounded-xl p-8 h-full">
-                  <div className="relative w-full h-64 mb-6 overflow-hidden rounded-lg">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#8A2BE2] to-[#FF00FF] opacity-20 rounded-lg"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <h3 className="text-2xl font-bold text-white mb-2">AI-Powered Dashboard</h3>
-                        <p className="text-gray-300">Track your ad performance in real-time</p>
-                      </div>
+            {/* Replace implementation timeline with premium client showcase */}
+            <div className="mt-12 pt-8 border-t border-gray-800">
+              <h3 className="text-xl font-semibold text-white mb-6">Premium Client Portfolio</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                {['Fortune 500', 'Global Media', 'Tech Giants', 'Luxury Brands', 'Entertainment', 'Finance Leaders'].map((client, index) => (
+                  <div key={index} className="glass-panel-premium rounded-lg p-4 text-center border border-[#BB86FC]/20">
+                    <div className="w-12 h-12 premium-gradient rounded-full mx-auto mb-2 flex items-center justify-center">
+                      <span className="text-lg font-bold text-white">{client.charAt(0)}</span>
                     </div>
+                    <div className="text-sm text-white">{client}</div>
+                    <div className="text-xs text-gray-400 mt-1">Enterprise</div>
                   </div>
-                  <p className="text-gray-400">
-                    Our intuitive dashboard gives you complete visibility into your ad campaigns. 
-                    Track impressions, clicks, conversions, and more with our advanced analytics.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="lg:col-span-2">
-                <div className="grid grid-cols-1 gap-8 h-full">
-                  {benefits.map((benefit, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="glass-panel-premium rounded-xl p-6 hover-glow"
-                    >
-                      <div className="flex items-start">
-                        <div className="w-10 h-10 premium-gradient rounded-lg flex items-center justify-center mr-4 text-xl">
-                          {benefit.icon}
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-semibold text-white mb-1">{benefit.title}</h3>
-                          <p className="text-gray-400">{benefit.description}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Pricing Section - More sophisticated */}
       <section id="pricing" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="glass-panel-premium rounded-2xl p-12 platform-shadow">
-            <h2 className="text-3xl font-bold text-white text-center mb-4">
-              Choose Your Plan
-            </h2>
-            <p className="text-gray-400 text-center max-w-2xl mx-auto mb-12">
-              Select the perfect plan for your needs. All plans include our core AI features.
-            </p>
+          <div className="glass-panel-premium rounded-2xl p-12 platform-shadow border border-[#BB86FC]/20">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+              <div>
+                <h2 className="text-3xl font-bold text-white">Elite Membership Tiers</h2>
+                <p className="text-gray-400 mt-2">Tailored solutions for visionaries and industry leaders</p>
+              </div>
+              <div className="mt-4 md:mt-0 flex items-center space-x-4">
+                <div className="flex items-center">
+                  <span className="text-sm text-gray-400 mr-3">Monthly</span>
+                  <div className="relative w-12 h-6 bg-gray-800 rounded-full">
+                    <div className="absolute left-1 top-1 w-4 h-4 bg-[#BB86FC] rounded-full"></div>
+                  </div>
+                  <span className="text-sm text-white ml-3">Annual</span>
+                </div>
+                <div className="text-xs bg-[#03DAC5]/20 text-[#03DAC5] px-3 py-1 rounded-full">Save 20%</div>
+              </div>
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
@@ -480,7 +650,7 @@ export default function Home() {
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-center text-gray-300">
                         <svg className="w-5 h-5 text-[#8A2BE2] mr-2" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                          <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                         </svg>
                         {feature}
                       </li>
@@ -489,6 +659,7 @@ export default function Home() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${plan.popular ? 'button-3d' : 'glass-panel-premium'}`}
                   >
                     {plan.cta}
@@ -557,39 +728,136 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - Made to POP a lot more */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-panel-premium rounded-2xl p-12 platform-shadow relative overflow-hidden"
+            whileHover={{ 
+              scale: 1.02,
+              boxShadow: "0 0 30px rgba(187, 134, 252, 0.4), 0 0 60px rgba(3, 218, 197, 0.2)"
+            }}
+            transition={{ 
+              duration: 0.5,
+              boxShadow: { duration: 0.8 }
+            }}
+            className="glass-panel-premium rounded-2xl p-12 platform-shadow relative overflow-hidden border-2 border-[#BB86FC]/30"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#8A2BE2] to-[#FF00FF] rounded-full filter blur-3xl opacity-20 -mr-32 -mt-32"></div>
+            <motion.div 
+              initial={{ opacity: 0.2, scale: 1 }}
+              animate={{ 
+                opacity: [0.2, 0.4, 0.2],
+                scale: [1, 1.2, 1],
+                rotate: [0, 5, 0, -5, 0]
+              }}
+              transition={{ 
+                duration: 10, 
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+              className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#8A2BE2] to-[#FF00FF] rounded-full filter blur-3xl -mr-32 -mt-32"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0.2, scale: 1 }}
+              animate={{ 
+                opacity: [0.2, 0.3, 0.2],
+                scale: [1, 1.1, 1],
+                rotate: [0, -5, 0, 5, 0]
+              }}
+              transition={{ 
+                duration: 8, 
+                repeat: Infinity,
+                repeatType: "reverse",
+                delay: 1
+              }}
+              className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-[#03DAC5] to-[#BB86FC] rounded-full filter blur-3xl -ml-32 -mb-32"
+            />
             
             <div className="relative z-10 text-center max-w-3xl mx-auto">
-              <h2 className="text-4xl font-bold text-white mb-6">
-                Ready to Transform Your Ad Creation?
-              </h2>
-              <p className="text-xl text-gray-300 mb-8">
+              <motion.div
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#BB86FC] to-[#03DAC5] mb-6">
+                  Ready to Transform Your Ad Creation?
+                </h2>
+              </motion.div>
+              
+              <motion.p 
+                initial={{ opacity: 0.8 }}
+                whileInView={{ opacity: 1 }}
+                className="text-xl text-gray-300 mb-8"
+              >
                 Join thousands of marketers who are saving time and creating better ads with AdVance.
-              </p>
+              </motion.p>
+              
               <div className="flex flex-wrap justify-center gap-4">
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(187, 134, 252, 0.7)"
+                  }}
                   whileTap={{ scale: 0.98 }}
-                  className="button-3d px-8 py-4 rounded-xl text-white font-semibold hover-glow"
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="button-3d px-8 py-4 rounded-xl text-white font-semibold hover-glow relative overflow-hidden group"
                 >
-                  Start Free Trial
+                  <span className="relative z-10">Start Free Trial</span>
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-[#BB86FC] to-[#03DAC5] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "0%" }}
+                    transition={{ duration: 0.5 }}
+                  />
                 </motion.button>
+                
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 15px rgba(3, 218, 197, 0.5)"
+                  }}
                   whileTap={{ scale: 0.98 }}
-                  className="glass-panel-premium px-8 py-4 rounded-xl text-white font-semibold"
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="glass-panel-premium px-8 py-4 rounded-xl text-white font-semibold border border-[#03DAC5]/30"
                 >
                   Schedule Demo
                 </motion.button>
+              </div>
+              
+              {/* Added floating badges */}
+              <div className="flex justify-center mt-8 gap-4">
+                <motion.div 
+                  initial={{ y: 0 }}
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-[#BB86FC]/30 flex items-center"
+                >
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  <span className="text-xs text-white">14-day free trial</span>
+                </motion.div>
+                
+                <motion.div 
+                  initial={{ y: 0 }}
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+                  className="bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-[#03DAC5]/30 flex items-center"
+                >
+                  <span className="w-2 h-2 bg-[#03DAC5] rounded-full mr-2"></span>
+                  <span className="text-xs text-white">No credit card required</span>
+                </motion.div>
+                
+                <motion.div 
+                  initial={{ y: 0 }}
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                  className="bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-[#BB86FC]/30 flex items-center"
+                >
+                  <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                  <span className="text-xs text-white">Cancel anytime</span>
+                </motion.div>
               </div>
             </div>
           </motion.div>
@@ -621,7 +889,7 @@ export default function Home() {
                 </a>
                 <a href="#" className="text-gray-400 hover:text-white">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fillRule="evenodd" d="M12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+                    <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
                   </svg>
                 </a>
               </div>

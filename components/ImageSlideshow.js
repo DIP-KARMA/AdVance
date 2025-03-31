@@ -25,7 +25,7 @@ const slideVariants = {
   })
 };
 
-const ImageSlideshow = ({ images, interval = 5000, height = 500, captions = [] }) => {
+const ImageSlideshow = ({ images, interval = 5000, height = 500, captions = [], objectFit = 'cover' }) => {
   const [[currentIndex, direction], setCurrentIndex] = useState([0, 0]);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -55,7 +55,11 @@ const ImageSlideshow = ({ images, interval = 5000, height = 500, captions = [] }
   return (
     <div 
       className="relative overflow-hidden rounded-xl glass-panel group"
-      style={{ height }}
+      style={{ 
+        height,
+        background: 'rgba(0, 0, 0, 0.05)',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(138, 43, 226, 0.15)'
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -71,20 +75,30 @@ const ImageSlideshow = ({ images, interval = 5000, height = 500, captions = [] }
           className="absolute inset-0"
         >
           <div className="relative w-full h-full">
+            {/* Clean presentation without dark overlays */}
             <Image
               src={`/images/${images[currentIndex]}`}
               alt={`Slide ${currentIndex + 1}`}
               fill
-              className="object-cover"
+              className={`object-${objectFit} z-0`}
               priority={currentIndex === 0}
-              quality={75}
+              quality={100}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ 
+                filter: 'none',
+                transition: 'transform 0.5s ease-in-out'
+              }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            
+            {/* Subtle highlight effect - not darkening the image */}
+            <div className="absolute inset-0 z-20 bg-gradient-to-t from-transparent via-transparent to-transparent pointer-events-none">
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
             
             {/* Caption */}
             {captions[currentIndex] && (
-              <div className="absolute bottom-8 left-0 right-0 text-center px-4">
-                <div className="inline-block bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
+              <div className="absolute bottom-8 left-0 right-0 text-center px-4 z-40">
+                <div className="inline-block bg-black/30 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
                   <p className="text-white font-medium">{captions[currentIndex]}</p>
                 </div>
               </div>

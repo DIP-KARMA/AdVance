@@ -1,0 +1,72 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blob-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8A2BE2" />
+      <stop offset="50%" stop-color="#C71585" />
+      <stop offset="100%" stop-color="#9370DB" />
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="30" />
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feFlood flood-color="#8A2BE2" flood-opacity="0.7" result="glow" />
+      <feComposite in="glow" in2="blur" operator="in" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Main blob -->
+  <path d="M600,500 C750,650 900,550 950,400 C1000,250 900,100 750,150 C600,200 500,100 400,150 C300,200 200,300 250,400 C300,500 450,350 600,500 Z" 
+        fill="url(#blob-gradient)" 
+        filter="url(#blur)" 
+        opacity="0.8">
+    <animate attributeName="d" 
+             dur="20s" 
+             repeatCount="indefinite" 
+             values="
+             M600,500 C750,650 900,550 950,400 C1000,250 900,100 750,150 C600,200 500,100 400,150 C300,200 200,300 250,400 C300,500 450,350 600,500 Z;
+             
+             M550,450 C700,550 850,500 900,350 C950,200 850,150 700,200 C550,250 500,150 350,200 C200,250 150,350 200,450 C250,550 400,350 550,450 Z;
+             
+             M600,500 C750,650 900,550 950,400 C1000,250 900,100 750,150 C600,200 500,100 400,150 C300,200 200,300 250,400 C300,500 450,350 600,500 Z"
+             />
+  </path>
+  
+  <!-- Smaller blob for added detail -->
+  <path d="M650,400 C700,450 750,400 775,350 C800,300 775,250 725,275 C675,300 625,275 600,300 C575,325 550,375 575,400 C600,425 600,350 650,400 Z" 
+        fill="#FF00FF" 
+        filter="url(#glow)" 
+        opacity="0.4">
+    <animate attributeName="d" 
+             dur="15s" 
+             repeatCount="indefinite" 
+             values="
+             M650,400 C700,450 750,400 775,350 C800,300 775,250 725,275 C675,300 625,275 600,300 C575,325 550,375 575,400 C600,425 600,350 650,400 Z;
+             
+             M675,425 C725,475 775,425 800,375 C825,325 800,275 750,300 C700,325 650,300 625,325 C600,350 575,400 600,425 C625,450 625,375 675,425 Z;
+             
+             M650,400 C700,450 750,400 775,350 C800,300 775,250 725,275 C675,300 625,275 600,300 C575,325 550,375 575,400 C600,425 600,350 650,400 Z"
+             />
+  </path>
+  
+  <!-- Splatter effects -->
+  <circle cx="500" cy="300" r="10" fill="#C71585" opacity="0.6">
+    <animate attributeName="r" values="10;15;10" dur="5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="700" cy="250" r="8" fill="#9370DB" opacity="0.7">
+    <animate attributeName="r" values="8;12;8" dur="4s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="600" cy="400" r="12" fill="#8A2BE2" opacity="0.5">
+    <animate attributeName="r" values="12;18;12" dur="6s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="800" cy="350" r="7" fill="#FF00FF" opacity="0.6">
+    <animate attributeName="r" values="7;11;7" dur="3s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="450" cy="450" r="9" fill="#9370DB" opacity="0.5">
+    <animate attributeName="r" values="9;14;9" dur="5.5s" repeatCount="indefinite" />
+  </circle>
+</svg>
