@@ -142,42 +142,12 @@ export default function Home() {
       <header className="relative pt-40 pb-20 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Slideshow - Moved to a more prominent position spanning 7 columns */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="relative group lg:col-span-7 order-2 lg:order-1"
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#8A2BE2] to-[#FF00FF] rounded-xl blur-lg opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-              <div className="relative glass-panel-premium rounded-xl p-6 platform-shadow">
-                <div className="absolute -top-10 -right-10 bg-[#FF00FF]/10 backdrop-blur-sm text-white text-sm py-2 px-4 rounded-full">
-                  <span className="text-[#FF00FF] font-semibold">New:</span> AI integration v2.0
-                </div>
-                
-                <div className="mb-6 relative">
-                  {/* Professional highlight effect */}
-                  <div className="absolute -inset-2 bg-gradient-to-r from-[#8A2BE2]/10 to-[#FF00FF]/10 rounded-xl blur-xl opacity-30 z-0"></div>
-                  
-                  {/* Clean, professional slideshow container */}
-                  <div className="relative z-20 rounded-xl overflow-hidden" style={{ boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15), 0 0 15px rgba(138, 43, 226, 0.1)' }}>
-                    <ImageSlideshow 
-                      images={slideshowImages} 
-                      captions={slideshowCaptions} 
-                      interval={4000} 
-                      height={350} 
-                      objectFit="contain" 
-                    />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-            
-            {/* Content - Reduced to 5 columns with smaller heading */}
+            {/* Content - Moved to the left side (5 columns) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="space-y-6 lg:col-span-5 order-1 lg:order-2"
+              className="space-y-6 lg:col-span-5 order-1"
+              data-component-name="MotionComponent"
             >
               <motion.h1 
                 initial={{ opacity: 0 }}
@@ -258,147 +228,93 @@ export default function Home() {
                 </div>
               </motion.div>
             </motion.div>
+            
+            {/* Slideshow - Enhanced and moved to the right side (7 columns) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="relative group lg:col-span-7 order-2"
+              data-component-name="Home"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#8A2BE2] to-[#FF00FF] rounded-xl blur-lg opacity-35 group-hover:opacity-50 transition duration-1000"></div>
+              <div className="relative glass-panel-premium rounded-xl p-8 platform-shadow border border-[#BB86FC]/30">
+                <div className="absolute -top-10 -right-10 bg-[#FF00FF]/10 backdrop-blur-sm text-white text-sm py-2 px-4 rounded-full">
+                  <span className="text-[#FF00FF] font-semibold">Premium:</span> AI integration v2.0
+                </div>
+                
+                <div className="mb-8 relative">
+                  {/* Enhanced professional highlight effect */}
+                  <div className="absolute -inset-3 bg-gradient-to-r from-[#8A2BE2]/15 to-[#FF00FF]/15 rounded-xl blur-xl opacity-40 z-0"></div>
+                  
+                  {/* Enhanced slideshow container with laser glow effects */}
+                  <div className="relative z-20 rounded-xl overflow-hidden" 
+                       style={{ 
+                         boxShadow: '0 15px 40px rgba(0, 0, 0, 0.25), 0 0 20px rgba(138, 43, 226, 0.15)',
+                         transform: 'scale(1.05)'
+                       }}>
+                    {/* Laser glow corners */}
+                    <div className="absolute top-0 left-0 w-3 h-3 rounded-full bg-[#BB86FC] blur-sm z-10"></div>
+                    <div className="absolute top-0 right-0 w-3 h-3 rounded-full bg-[#03DAC5] blur-sm z-10"></div>
+                    <div className="absolute bottom-0 left-0 w-3 h-3 rounded-full bg-[#03DAC5] blur-sm z-10"></div>
+                    <div className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#BB86FC] blur-sm z-10"></div>
+                    
+                    {/* Laser lines */}
+                    <div className="absolute top-0 left-3 right-3 h-[1px] bg-gradient-to-r from-[#BB86FC] via-transparent to-[#03DAC5] z-10 opacity-80"></div>
+                    <div className="absolute bottom-0 left-3 right-3 h-[1px] bg-gradient-to-r from-[#03DAC5] via-transparent to-[#BB86FC] z-10 opacity-80"></div>
+                    <div className="absolute left-0 top-3 bottom-3 w-[1px] bg-gradient-to-b from-[#BB86FC] via-transparent to-[#03DAC5] z-10 opacity-80"></div>
+                    <div className="absolute right-0 top-3 bottom-3 w-[1px] bg-gradient-to-b from-[#03DAC5] via-transparent to-[#BB86FC] z-10 opacity-80"></div>
+                    
+                    <ImageSlideshow 
+                      images={slideshowImages} 
+                      captions={slideshowCaptions} 
+                      interval={4000} 
+                      height={400} 
+                      objectFit="contain" 
+                    />
+                  </div>
+                </div>
+                
+                {/* Added premium features section */}
+                <div className="grid grid-cols-2 gap-6 mt-6">
+                  <div className="glass-panel-premium p-4 rounded-lg border border-[#BB86FC]/20 hover:border-[#BB86FC]/40 transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-10 h-10 rounded-full bg-[#BB86FC]/20 flex items-center justify-center">
+                        <span className="text-[#BB86FC] text-lg">✨</span>
+                      </div>
+                      <h3 className="text-white font-medium">AI-Powered</h3>
+                    </div>
+                    <p className="text-gray-400 text-sm">Create stunning ads with our advanced AI technology</p>
+                  </div>
+                  
+                  <div className="glass-panel-premium p-4 rounded-lg border border-[#03DAC5]/20 hover:border-[#03DAC5]/40 transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-10 h-10 rounded-full bg-[#03DAC5]/20 flex items-center justify-center">
+                        <span className="text-[#03DAC5] text-lg">🚀</span>
+                      </div>
+                      <h3 className="text-white font-medium">Lightning Fast</h3>
+                    </div>
+                    <p className="text-gray-400 text-sm">Generate professional ads in seconds, not hours</p>
+                  </div>
+                </div>
+                
+                {/* Premium call-to-action */}
+                <div className="mt-6 flex justify-center">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="button-3d px-8 py-3 rounded-xl text-white font-semibold text-lg"
+                  >
+                    Start Creating Now
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </header>
 
-      {/* Create Ad Form - Enhanced with sophisticated design */}
-      <section className="py-16 px-6 bg-gradient-to-b from-transparent to-[#14001f]/30">
-        <div className="max-w-3xl mx-auto">
-          <div className="glass-panel-premium rounded-xl p-8 platform-shadow relative overflow-hidden border border-[#BB86FC]/20">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#8A2BE2]/20 to-[#FF00FF]/20 rounded-full filter blur-2xl opacity-70 -mr-20 -mt-20"></div>
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-[#8A2BE2]/20 to-[#03DAC5]/20 rounded-full filter blur-2xl opacity-70 -ml-20 -mb-20"></div>
-            
-            {/* Sophisticated header with eye-catching phrase */}
-            <div className="relative z-10 mb-8">
-              <h2 className="text-3xl font-bold text-white mb-2 text-center">Transform Vision into Impact</h2>
-              <p className="text-gray-300 text-center max-w-xl mx-auto">Use our AI to create stunning ads that get real results. Simple, fast, and powerful.</p>
-            </div>
-            
-            {/* Image upload section with enhanced styling */}
-            <div className="space-y-4">
-              <div className="relative">
-                <div 
-                  className="glass-panel-premium rounded-xl p-8 text-center cursor-pointer hover-glow border border-[#BB86FC]/30 transition-all duration-300"
-                  onClick={() => document.getElementById('image-upload').click()}
-                >
-                  {preview ? (
-                    <Image
-                      src={preview}
-                      alt="Preview"
-                      width={400}
-                      height={300}
-                      className="rounded-lg mx-auto"
-                    />
-                  ) : (
-                    <div className="space-y-4">
-                      <div className="w-16 h-16 premium-gradient rounded-full mx-auto flex items-center justify-center">
-                        <svg
-                          className="w-8 h-8 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                          />
-                        </svg>
-                      </div>
-                      <p className="text-gray-400">Import visual assets or utilize drag-and-drop functionality</p>
-                    </div>
-                  )}
-                  <input
-                    id="image-upload"
-                    type="file"
-                    className="hidden"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                  />
-                </div>
-                
-                {/* Image format specifications with increased max size */}
-                <div className="flex justify-between text-xs text-gray-500 mt-2 px-2">
-                  <span>Supported: PNG, JPG, WebP</span>
-                  <span>Max size: 500MB</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Prompt input with enhanced styling */}
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <label className="block text-sm font-medium text-gray-300">Creative Direction Parameters</label>
-                <span className="text-xs text-[#BB86FC]">AI-Enhanced</span>
-              </div>
-              <textarea
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                className="w-full h-32 glass-panel-premium rounded-xl p-4 text-white resize-none focus:ring-2 focus:ring-purple-500 outline-none border border-[#BB86FC]/30"
-                placeholder="Articulate your creative vision with specificity regarding tone, aesthetic, and thematic elements..."
-              />
-              
-              {/* Prompt suggestions */}
-              <div className="flex flex-wrap gap-2 mt-2">
-                <div className="text-xs bg-[#BB86FC]/20 text-[#BB86FC] px-2 py-1 rounded-full cursor-pointer hover:bg-[#BB86FC]/30 transition-colors">Minimalist</div>
-                <div className="text-xs bg-[#BB86FC]/20 text-[#BB86FC] px-2 py-1 rounded-full cursor-pointer hover:bg-[#BB86FC]/30 transition-colors">Corporate</div>
-                <div className="text-xs bg-[#BB86FC]/20 text-[#BB86FC] px-2 py-1 rounded-full cursor-pointer hover:bg-[#BB86FC]/30 transition-colors">Vibrant</div>
-                <div className="text-xs bg-[#BB86FC]/20 text-[#BB86FC] px-2 py-1 rounded-full cursor-pointer hover:bg-[#BB86FC]/30 transition-colors">Luxury</div>
-              </div>
-            </div>
-            
-            {/* Advanced options */}
-            <div className="glass-panel-premium rounded-xl p-4 border border-[#BB86FC]/30">
-              <div className="flex justify-between items-center mb-3">
-                <h4 className="text-sm font-semibold text-white">Advanced Configuration</h4>
-                <div className="text-xs text-[#03DAC5] bg-[#03DAC5]/10 px-3 py-1 rounded-full">Enterprise</div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs text-gray-400 mb-1">Aspect Ratio</label>
-                  <select className="w-full glass-panel-premium rounded-lg p-2 text-sm text-white border border-[#BB86FC]/30 outline-none">
-                    <option>16:9 - Standard</option>
-                    <option>1:1 - Square</option>
-                    <option>4:5 - Portrait</option>
-                    <option>9:16 - Story</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-400 mb-1">Style Intensity</label>
-                  <select className="w-full glass-panel-premium rounded-lg p-2 text-sm text-white border border-[#BB86FC]/30 outline-none">
-                    <option>Balanced</option>
-                    <option>Subtle</option>
-                    <option>Pronounced</option>
-                    <option>Dramatic</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="button-3d w-full py-4 rounded-xl text-white font-semibold"
-              type="submit"
-            >
-              UNLEASH YOUR CREATIVE MASTERPIECE
-            </motion.button>
-            
-            {/* Trust indicators */}
-            <div className="flex items-center justify-center space-x-2 text-xs text-gray-500">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-              <span>Enterprise-grade security & IP protection</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Showcase Section - Using the new professional component */}
+      {/* Showcase Section - Using the professional component */}
       <ShowcaseSection />
 
       {/* Features Section - More sophisticated and detailed */}
